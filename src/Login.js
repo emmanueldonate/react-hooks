@@ -1,18 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 export default function Login() {
 
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [user, setUser] = useState(null)
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [user, setUser] = useState(null);
 
     const handleSubmit = event => {
-        event.preventDefault()
+        event.preventDefault();
         const userData = {
             username,
             password
         }
-        setUser(userData)
+        setUser(userData);
+        setUsername("");
+        setPassword("");
     }
 
     return (
@@ -27,9 +29,22 @@ export default function Login() {
             alignItems: 'center',
             justifyItems: 'center'
         }}
+        onSubmit={handleSubmit}
         >
-            <input type="text"  placeholder="Username" onChange={event => setUsername(event.target.value)}/>
-            <input type="password" placeholder="Password" onChange={event => setPassword(event.target.value)}/>
+            <input 
+                type="text"  
+                placeholder="Username" 
+                onChange={event => setUsername(event.target.value)}
+                value={username}
+                />
+                
+            <input 
+                type="password" 
+                placeholder="Password" 
+                onChange={event => setPassword(event.target.value)}
+                value={password}
+                />
+
             <button type="submit">Login</button>
         </form>
         {user && JSON.stringify(user, null, 2)}
