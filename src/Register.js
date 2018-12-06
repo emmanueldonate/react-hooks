@@ -4,25 +4,25 @@ const initialFormState = {
     username: "",
     email: "",
     password: ""
-}
+};
 
 export default function Register() {
 
-    const [form, setForm] = useState(initialFormState)
-    const [user, setUser] = useState(null)
+    const [form, setForm] = useState(initialFormState);
+    const [user, setUser] = useState(null);
 
     const handleChange = event => {
         setForm({
             ...form,
             [event.target.name] : event.target.value
-        })
+        });
     }
 
     const handleSubmit = event => {
         event.preventDefault();
         setUser(form);
         setForm(initialFormState);
-    }
+    };
 
     return <div 
     style={{
